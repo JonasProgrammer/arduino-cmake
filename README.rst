@@ -4,7 +4,7 @@ Arduino CMake
 
 Arduino is a great development platform, which is easy to use. It has everything a beginner should need. The *Arduino IDE* simplifies a lot of things for the standard user, but if you are a professional programmer the IDE can feel simplistic and restrictive.
 
-One major drawback of the *Arduino IDE* is that you cannot do anything without it, which for me is a **complete buzz kill**. Thats why I created an alternative build system for the Arduino using CMake.
+One major drawback of the *Arduino IDE* is that you cannot do anything without it, which for me is a **complete buzz kill**. Thats why queezythegreat created an alternative build system for the Arduino using CMake. With the original repository not being updated since 2014 and lacking some important features like support for the latest Arduino SDKs, I decided to fix things up for 1.6; now that some people have started using this as their preferred fork, I decided to accept my fate of being the current maintainer.
 
 CMake is great cross-platform build system that works on practically any operating system. With it you are not constrained to a single build system. CMake lets you generate the build system that fits your needs, using the tools you like. It can generate any type of build system, from simple Makefiles, to complete projects for Eclipse, Visual Studio, XCode, etc.
 
@@ -36,14 +36,16 @@ Features
 Feedback
 --------
 
-**Arduino CMake** is hosted on GitHub and is available on multiple forks (At the time of writing up to **156(!)**), 
-with the most advanced and maintainable being the following:
+**Arduino CMake** is hosted on GitHub and is available on multiple forks (At the time of writing up to **160(!)**),
+with one the more advanced and maintainable being the following:
 
 https://github.com/JonasProgrammer/arduino-cmake/
 
-However, the original repository deserves its honor, therefore a direct link to it is provided as well:
+However, none of this would have been possible with the generous bunch of work the original author queezythegreat invested into this project, who definately earns most of the credit for getting things running:
 
 https://github.com/queezythegreat/arduino-cmake
+
+I want to stress again that he did all the initial work to even make CMake spit out Arduino firmwares. Without the effort queezythegreat put into this, I would not have been able to even think about getting an Arduino 1.6 project running. All I did was tweaking some bits to get a newer Arduino SDK revision to work. This is by no means a hostile fork and I would give control back to him at any time, should he wish so.
 
 Did you find a bug or would like a specific feature, please report it at:
 
@@ -74,7 +76,8 @@ Contributors
 
 I would like to thank the following people for contributing to **Arduino CMake**:
 
-* Jonas (`JonasProgrammer`_)
+* Juan José Herrero Barbosa (`Souler`_)
+* Bei Chen Liu (`Baycken`_)
 * MrPointer (`MrPointer`_)
 * Marc Plano-Lesay (`Kernald`_)
 * James Goppert (`jgoppert`_)
@@ -96,8 +99,11 @@ I would like to thank the following people for contributing to **Arduino CMake**
 * Brendan Shillingford (`bshillingford`_)
 * Mike Purvis (`mikepurvis`_) 
 * Steffen Hanikel (`hanikesn`_)
+* Tomasz Bogdal (`queezythegreat`_) (original author of arduino-cmake)
+* Jonas (`JonasProgrammer`_) (1.6 port and 'maintainer' by fate)
 
-.. _JonasProgrammer: https://github.com/JonasProgrammer
+.. _Souler: https://github.com/Souler
+.. _Baycken: https://github.com/Baycken
 .. _MrPointer: https://github.com/MrPointer
 .. _Kernald: https://github.com/Kernald
 .. _jgoppert: https://github.com/jgoppert
@@ -119,6 +125,8 @@ I would like to thank the following people for contributing to **Arduino CMake**
 .. _bshillingford: https://github.com/bshillingford
 .. _mikepurvis: https://github.com/mikepurvis
 .. _hanikesn: https://github.com/hanikesn
+.. _queezythegreat: https://github.com/queezythegreat
+.. _JonasProgrammer: https://github.com/JonasProgrammer
 
 License
 -------

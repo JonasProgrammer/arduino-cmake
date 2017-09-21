@@ -515,6 +515,7 @@ function(GENERATE_ARDUINO_FIRMWARE INPUT_NAME)
 
     find_arduino_libraries(TARGET_LIBS "${ALL_SRCS}" "${INPUT_ARDLIBS}")
     foreach (LIB_DEP ${TARGET_LIBS})
+        arduino_debug_msg("Arduino Library: ${LIB_DEP}")
         set(LIB_DEP_INCLUDES "${LIB_DEP_INCLUDES} -I\"${LIB_DEP}\"")
     endforeach ()
 
@@ -2092,6 +2093,8 @@ function(find_sources VAR_NAME LIB_PATH RECURSE)
     set(FILE_SEARCH_LIST
             ${LIB_PATH}/*.cpp
             ${LIB_PATH}/*.c
+            ${LIB_PATH}/*.s
+            ${LIB_PATH}/*.S
             ${LIB_PATH}/*.cc
             ${LIB_PATH}/*.cxx
             ${LIB_PATH}/*.h
@@ -2276,7 +2279,10 @@ function(get_arduino_flags COMPILE_FLAGS_VAR LINK_FLAGS_VAR BOARD_ID MANUAL)
             set(COMPILE_FLAGS "${COMPILE_FLAGS} -DUSB_PID=${${BOARD_ID}.build.pid}")
         endif ()
         if (NOT MANUAL)
-            set(COMPILE_FLAGS "${COMPILE_FLAGS} -I\"${${BOARD_CORE}.path}\" -I\"${ARDUINO_LIBRARIES_PATH}\" -I\"${ARDUINO_PLATFORM_LIBRARIES_PATH}\" ")
+            set(COMPILE_FLAGS "${COMPILE_FLAGS} -I\"${${BOARD_CORE}.path}\" -I\"${ARDUINO_LIBRARIES_PATH}\"")
+            if (${ARDUINO_PLATFORM_LIBRARIES_PATH})
+              set(COMPILE_FLAGS "${COMPILE_FLAGS} -I\"${ARDUINO_PLATFORM_LIBRARIES_PATH}\"")
+            endif ()
         endif ()
         set(LINK_FLAGS "-mmcu=${${BOARD_ID}.build.mcu}")
         if (ARDUINO_SDK_VERSION VERSION_GREATER 1.0 OR ARDUINO_SDK_VERSION VERSION_EQUAL 1.0)
