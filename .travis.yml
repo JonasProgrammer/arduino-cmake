@@ -1,0 +1,25 @@
+language: c
+env:
+  matrix:
+    - ARDUINO_SDK_VERSION=1.6.13
+    - ARDUINO_SDK_VERSION=1.8.4
+addons:
+  apt:
+    packages:
+      - cmake
+      - gcc-avr
+      - binutils-avr
+      - avr-libc
+      - avrdude
+before_install:
+  - wget "https://downloads.arduino.cc/arduino-$ARDUINO_SDK_VERSION-linux32.tar.xz" -O arduino-sdk.tar.xz
+  - mkdir arduino-sdk
+  - tar xf arduino-sdk.tar.xz -C arduino-sdk --strip-components 1
+  - export ARDUINO_SDK_PATH="$(pwd)/arduino-sdk"
+install:
+  - mkdir build
+  - rm -rf build/*
+  - cd build/
+script:
+  - cmake -D ARDUINO_SDK_PATH="$ARDUINO_SDK_PATH" ..
+  - make
